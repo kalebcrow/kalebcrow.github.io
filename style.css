@@ -1,3 +1,6 @@
+html{
+    width:100vw;
+}
 body{
     margin: 0;
     padding-top: 0;
@@ -9,7 +12,7 @@ body{
       linear-gradient(to bottom, rgb(95, 95, 95), transparent 1px);
     display: block;
     font-family: consolas;
-    max-width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
 }
 
