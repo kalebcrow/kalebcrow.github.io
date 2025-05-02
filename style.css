@@ -7,7 +7,7 @@ body{
     background-image:
       linear-gradient(to right, rgb(95, 95, 95) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(95, 95, 95), transparent 1px);
-    display: flexbox;
+    display: block;
     font-family: consolas;
     max-width: 100%;
     overflow-x: hidden;
@@ -98,10 +98,12 @@ body{
 
 .container .card .face.face1 .content .video{
     opacity: 0;
+    z-index: 1;
 }
 
 .container .card:hover .face.face1 .content .picture{
     opacity: 0;
+    z-index: 0;
 }
 
 .container .card:hover .face.face1 .content .video{
