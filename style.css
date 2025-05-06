@@ -76,7 +76,6 @@ body{
 }
 
 .container .card .face.face1 .content{
-    opacity: 0.2;
     transition: 0.5s;
 }
 
@@ -85,8 +84,22 @@ body{
     opacity: 1;
 }
 
+.container .card .face.face1 .title{
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 1em;
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
+    color: #FFF;
+    position:absolute;
+}
+
+.container .card:hover .face.face1  .title{
+    opacity:0;
+}
+
 .container .card .face.face1 .content .picture{
-    opacity: 1;
+    opacity: 0.4;
     position: absolute;
     top: 0;
     left: 0;
