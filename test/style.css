@@ -1,0 +1,37 @@
+body{
+    overflow-y: hidden;
+}
+
+#taskbar {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;;
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    display: flex;;
+}
+
+#window {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+  }
+  
+#windowheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff
+}
+
+#datetime{
+    position: absolute;
+    padding: 0px;
+    right:0;
+    color: #FFF;
+}

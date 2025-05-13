@@ -80,6 +80,7 @@ body{
     transform: translateY(0);
 }
 
+
 .container .card .face.face1 .content{
     transition: 0.5s;
 }
