@@ -21,7 +21,21 @@ body{
   body {
     margin-top:0;
     margin-bottom:0;
+  }
+}
 
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 95vw;
+    height: 53vw;
+    min-width: 0;
+    min-height: 0;
+  }
+  .card img {
+    width: 95vw;
+    height: 53vw;
+    min-width: 0;
+    min-height: 0;
   }
 }
 
