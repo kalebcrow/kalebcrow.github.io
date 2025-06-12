@@ -1,29 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinyl Selector</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .vinyl-section {
+      width: 60%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background-color: #ffffff;
+    }
+    .vinyl {
+      position: absolute;
+      width: 150vmin;
+      height: 150vmin;
+      top: 50%;
+      left: -100vmin;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #444 40%, #111 70%);
+      border: 8px solid #000;
+      transition: transform 1s ease-in-out;
+    }
+    .notch {
+      width: 6px;
+      height: 40px;
+      background: red;
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    .controls {
+      width: 40%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .selection {
+      position: absolute;
+      left: 0;
+      transform-origin: right center;
+      transform: rotate(0deg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s, font-weight 0.3s;
+      cursor: pointer;
+    }
+    .selection .line {
+      width: 40px;
+      height: 4px;
+      background-color: black;
+    }
+    .selection.active {
+      color: #d12d2d;
+      font-weight: bold;
+    }
+    .track-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      border: 2px solid black;
+      padding: 10px 20px;
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 8px;
+    }
+    .arrow {
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
-    
-    <div id="window">
-        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-        <div id="windowheader">Click here to move</div>
-        <p></p>
-        <p></p>
-        <p></p>
+  <div class="vinyl-section">
+    <div class="vinyl" id="vinyl">
+      <div class="notch"></div>
     </div>
-    <div id="taskbar">
-        <div id="startbtn">Start</div>
-        <div id="filebtn">File</div>
-        <div id="datetime">
-            <div id="time"></div>
-            <div id="date"></div>
-        </div>
+  </div>
+  <div class="controls">
+    <div class="selection" id="selection-0" style="top: 25%; transform: rotate(-30deg);" onclick="rotateTo(60)">
+      <div class="line"></div>
+      <span>Selection 1</span>
     </div>
-<script type="text/javascript" src="script.js"></script>
+    <div class="selection" id="selection-1" style="top: 50%; transform: rotate(0deg);" onclick="rotateTo(90)">
+      <div class="line"></div>
+      <span>Selection 2</span>
+    </div>
+    <div class="selection" id="selection-2" style="top: 75%; transform: rotate(30deg);" onclick="rotateTo(120)">
+      <div class="line"></div>
+      <span>Selection 3</span>
+    </div>
+
+    <div class="track-controls">
+      <span class="arrow" onclick="changeTrack(-1)">&#8592;</span>
+      <span>Change Track</span>
+      <span class="arrow" onclick="changeTrack(1)">&#8594;</span>
+    </div>
+  </div>
+
+  <script>
+    let currentAngle = 0;
+    const step = 120; // Degrees between selections
+    const totalSelections = 3;
+
+    function rotateTo(degrees) {
+      currentAngle = degrees;
+      updateRotation();
+    }
+
+    function changeTrack(direction) {
+      currentAngle = (currentAngle + direction * step + 360) % 360;
+      updateRotation();
+    }
+
+    function updateRotation() {
+      document.getElementById('vinyl').style.transform = `translateY(-50%) rotate(${currentAngle}deg)`;
+      updateSelectionHighlight();
+    }
+
+    function updateSelectionHighlight() {
+      const index = (360 - currentAngle) / step % totalSelections;
+      for (let i = 0; i < totalSelections; i++) {
+        const sel = document.getElementById(`selection-${i}`);
+        if (i === index) {
+          sel.classList.add('active');
+        } else {
+          sel.classList.remove('active');
+        }
+      }
+    }
+
+    // Initialize on load
+    updateRotation();
+  </script>
 </body>
+</html>
