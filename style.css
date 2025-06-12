@@ -25,6 +25,76 @@ body{
   }
 }
 
+@keyframes fadein {
+    from { opacity: 0; scale:1.05; }
+    to   { opacity: 1; }
+}
+
+
+.card {
+    height: 18rem;
+    width: 32rem;
+    background-color: #444;
+    color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    animation: fadein 1s forwards;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:nth-of-type(1) {
+    animation-delay: 0s;
+}
+.card:nth-of-type(2) {
+    animation-delay: 0.5s;
+}
+.card:nth-of-type(3) {
+    animation-delay: 1s;
+}
+.card:nth-of-type(4) {
+    animation-delay: 1.5s;
+}
+
+.card img {
+    position: absolute;
+    width: 32rem;
+    height: 18rem;
+    border-radius: 0.5rem;
+}
+
+.card p{
+    background: #0000003b;
+    color:#fff;
+    padding:1rem;
+    bottom: 0px;
+    left:1rem;
+    position: absolute;
+    z-index: 2;
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+.card .img1 img {
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.card:hover .img1 img {
+    opacity: 0;
+}
+
+.card .img2 img {
+    opacity: 0;
+    z-index: 3;
+}
+
+.card:hover .img2 img {
+    opacity: 1;
+}
+
 .header{
     color: #fff;
     background-color: #000000;
@@ -59,15 +129,7 @@ body{
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
-}
-
-.card {
-    height: 18rem;
-    width: 32rem;
-    background-color: #444;
-    color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: 0.5s;
 }
 
 .footer{
