@@ -24,16 +24,6 @@ body {
         margin-top: 0;
         margin-bottom: 0;
     }
-    body .card {
-        width: 16rem;
-        height: 9rem;
-    }
-    body .card img {
-        position: absolute;
-        width: 16rem;
-        height: 9rem;
-        border-radius: 0.5rem;
-    }
 }
 
 @keyframes fadein {
@@ -73,7 +63,8 @@ body {
 .card p {
     background: #0003;
     color: #fff;
-    padding: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
     bottom: 0;
     left: 1rem;
     position: absolute;
